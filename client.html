@@ -6,13 +6,12 @@
             var socketio = io.connect("127.0.0.1:1989");
 
             socketio.on('message_to_client', function(data){
-                document.getElementById('chatlog').innerHTML = ("<hr/" + data['message'] + document.getElementById('chatlog').innerHTML);
+                document.getElementById("chatlog").innerHTML = ("<hr/>" + data['message'] + document.getElementById('chatlog').innerHTML);
             });
             function sendMessage(){
-                console.log('hello')
                 var msg = document.getElementById('message_input').value;
-                console.log(msg);
                 socketio.emit('message_to_server', { message : msg});
+                document.getElementById('message_input').value = '';
             }
         </script>
     </head>
